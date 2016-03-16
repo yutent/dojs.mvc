@@ -1,0 +1,11 @@
+{
+  "name": "index",
+  "version": "1.0.0",
+  "description": "默认index应用",
+  "main": "controller/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yutent",
+  "license": "ISC"
+}
