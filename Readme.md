@@ -61,7 +61,7 @@ server {
 
 var app = new (require('dojs'))(__dirname + '/')
 
-app.set('website', 'www.your_domain.com')
+app.use('website', 'www.your_domain.com')
 app.use('domain', 'your_domain.com') //设置域，cookie用到，默认等于website
 app.use('dbs.mysql', {host: '', port: '', db: ''})
 app.use('port', 3004) //设置端口,默认3000
