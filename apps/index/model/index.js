@@ -11,7 +11,6 @@ class Index {
 
     constructor(){
         // this.db = new Mysql(dojs.dbs.mysql)
-        this.db = new Rethink(dojs.dbs.rethink)
         this.mo = new Mongo(dojs.dbs.mongo)
     }
 
