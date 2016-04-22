@@ -8,9 +8,9 @@
         <!--{=docCont | truncate:3}-->
     </section>
     <section>
-        <!--{=sss || '<span>This content has not used html filter</span>'}-->
+        <!--{=docCont.sss || '<span>This content has not used html filter</span>'}-->
         <br>
-        <!--{=sss || '<span>This content has been used html filter</span>' | html}-->
+        <!--{=docCont.sss || '<span>This content has been used html filter</span>' | html}-->
     </section>
     <ul>
         <!--{each i it in arr}-->
