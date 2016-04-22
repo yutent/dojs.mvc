@@ -12,7 +12,7 @@ class Index extends Controller {
     constructor(c){
         super(c)
         var _this = this
-        this.model = require('../model/index')
+        // this.model = require('../model/index')
 
         this.async(this.index)
             .catch(function(e){
