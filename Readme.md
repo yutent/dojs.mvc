@@ -74,11 +74,11 @@ app.start()
 其他的配置, 请参考dojs模块下的lib目录里的 config.js文件
 
 
-4. 启动 node, 推荐使用forever
+4. 启动 node, 推荐使用pm2
 
 ```shell
 $ cd /www/your_domain.com/
-$ forever -w -e ./data/logs/error.log start app.js
+$ pm2 start.json
 $
 ```
 

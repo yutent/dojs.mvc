@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "script": "master.js",
+            "watch": true,
+            "name": "dojs.cc",
+            "ignore_watch": ["data", "public", "package.json", "start.json"],
+            "exec_mode": "cluster",
+            "instances": "max"
+        }
+    ]
+}

@@ -1,2 +1,0 @@
-#!/bin/sh
-forever -w -e ./data/logs/error.log start app.js
