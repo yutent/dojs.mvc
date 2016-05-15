@@ -6,7 +6,12 @@
             "name": "dojs.cc",
             "ignore_watch": ["data", "public", "package.json", "pm2.json"],
             "exec_mode": "cluster",
-            "instances": "max"
+            "instances": "max",
+            "error_file": "data/logs/error.log",
+            "out_file": "data/logs/debug.log",
+            "min_uptime": "60s",
+            "max_restarts": 30,
+            "max_memory_restart": "300M"
         }
     ]
 }
