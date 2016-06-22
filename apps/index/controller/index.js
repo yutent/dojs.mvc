@@ -26,7 +26,7 @@ class Index extends Controller {
         this.assign('docCont', 'This is test words!')
         this.assign('seoTitle', 'This is the title for seo')
         this.assign('arr', {aa: 123, bb: 456, cc: 789})
-        this.rander('index/index')
+        this.render('index/index')
     }
 
 }
