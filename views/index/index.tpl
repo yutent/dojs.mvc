@@ -1,5 +1,6 @@
 <!--{include './header'}-->
 <!--{var obj={a: 123, b: 456}}-->
+<!--{var arr2=[2,4,6]}-->
 
 <h1>It works! <!--{=Date.now() | date:'Y-m-d'}--></h1>
 <fieldset>
@@ -18,8 +19,13 @@
         <!--{/each}-->
     </ul>
     <dl>
-        <!--{each i item in obj}-->
-        <dt><span style="color:#09f" ><!--{=i}--> </span><span><!--{=item}--></span></dt>
+        <!--{each i it in obj}-->
+        <dt><span style="color:#09f" ><!--{=i}--> </span><span><!--{=it}--></span></dt>
+        <!--{/each}-->
+    </dl>
+    <dl>
+        <!--{each i in arr2}-->
+            <!--{=i}--> 
         <!--{/each}-->
     </dl>
 </fieldset>

@@ -21,10 +21,12 @@ class Index extends Controller {
 
 
     * index(){
+        // let arr = yield this.model.get1()
+        let arr = [{aa: 123, bb: 456, cc: 789}]
         this.assign('docHd', 'example')
         this.assign('docCont', 'This is test words!')
         this.assign('seoTitle', 'This is the title for seo')
-        this.assign('arr', {aa: 123, bb: 456, cc: 789})
+        this.assign('arr', arr)
         this.render('index/index')
     }
 

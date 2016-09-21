@@ -10,11 +10,23 @@
 class Index {
 
     constructor(){
-        // this.db = new Mysql(dojs.dbs.mysql)
+        this.db = new Mysql(dojs.dbs.mysql)
         this.mo = new Mongo(dojs.dbs.mongo)
     }
 
-    find(){
+    get1(){
+        return fn => {
+            this.db.findOne({
+                table: 'test',
+                where: {},
+                slave: true,
+            }, fn).catch(err => {
+                Response.error(err)
+            })
+        }
+    }
+
+    get2(){
         return fn => {
             this.mo.find({
                 collection: 'test',
@@ -23,18 +35,7 @@ class Index {
         }
     }
 
-    addUser(data){
-        return fn => {
-            this.db.insert({
-                table: 'test',
-                data: data,
-                opts: {
-                    // noreply: true,
-                    // durability: 'soft'
-                }
-            }, fn)
-        }
-    }
+
 
 }
 
