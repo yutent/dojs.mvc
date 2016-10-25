@@ -2,7 +2,7 @@
 
 一个轻量级的，易学的，拓展性灵活的 nodejs MVC框架。
 
-要求nodejs版本在4.0或以上，默认使用mongoDB/MySQL/RethinkDB，其他的数据库可以自行拓展
+要求nodejs版本在4.0或以上，默认使用mongoDB/MySQL，其他的数据库可以自行拓展
 
 
 ## 启用方法(步骤)
@@ -78,7 +78,7 @@ app.start()
 
 ```shell
 $ cd /www/your_domain.com/
-$ pm2 start.json
+$ ./start
 $
 ```
 
