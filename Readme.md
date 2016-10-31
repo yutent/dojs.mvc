@@ -18,37 +18,46 @@
 2. 添加nginx配置(使用其他web服务,如apache的童鞋,请自行根据所使用的web服务器语法改写**强烈推荐nginx**), 路径啥的自行根据自己的机器修改
 
 ```shell
-upstream demo_upstream {
-        server 127.0.0.1:3004;
-        #server 127.0.0.1:3005;
-        keepalive 64;
+upstream dojs_upstream {
+    server 127.0.0.1:3000;
+    #server 127.0.0.1:3005;
+    keepalive 64;
 }
 
 server {
 
-        listen 80;
-        server_name www.your_domain.com;
-        index index.html index.htm;
-        root  /www/your_domain.com/public;
+    listen 80;
+    server_name dojs.cc;
+    index index.html index.htm;
+    root  /www/dojs.cc/public;
 
-        location ~ ^/(images/|js/|css/|cache/|upload/|favicon.ico|robots.txt)
-        {
-                expires      1h;
-                access_log off;
-        }
 
-        location /
-        {
-                proxy_set_header   X-Real-IP               $remote_addr;
-                proxy_set_header   X-Forwarded-For         $proxy_add_x_forwarded_for;
-                proxy_set_header   Host                    $http_host;
-                proxy_set_header   X-NginX-Proxy           true;
-                proxy_set_header   Connection              "";
-                proxy_http_version 1.1;
-                proxy_pass         http://demo_upstream;
-                proxy_redirect     off;
-        }
+    location ~ ^/(images/|js/|css/|cache/|favicon.ico|robots.txt) {
+            expires      1d;
+            access_log off;
+    }
+
+    location / {
+        try_files $uri
+                @proxy;
+
+    }
+
+    location @proxy {       
+        proxy_set_header        X-Real-IP               $remote_addr;
+        proxy_set_header        X-Forwarded-For         $proxy_add_x_forwarded_for;
+        proxy_set_header        Host                    $http_host;
+        proxy_set_header        X-NginX-Proxy           true;
+        proxy_set_header        Upgrade                 $http_upgrade;
+        proxy_set_header        Connection              "upgrade";
+        proxy_http_version      1.1;
+        proxy_max_temp_file_size 0;
+        proxy_pass              http://dojs_upstream;
+        proxy_redirect          off;
+        proxy_read_timeout      240s;
+    }     
 }
+
 ```
 
 

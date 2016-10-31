@@ -6,7 +6,10 @@
 <fieldset>
     <legend><!--{=docHd}--> : </legend>
     <section>
-        <!--{=docCont | truncate:3}-->
+        <!--{=docCont | truncate:5}-->
+    </section>
+    <section>
+        <!--{=docCont}-->
     </section>
     <section>
         <!--{=docCont.sss || '<span>This content has not used html filter</span>'}-->
@@ -15,7 +18,13 @@
     </section>
     <ul>
         <!--{each i it in arr}-->
-        <li <!--{if i == 'bb'}--> style="color: #f30" <!--{elseif i == 'cc'}--> style="color: #0f0" <!--{/if}-->><!--{=i}--> -> <!--{=it}--></li>
+        <li <!--{if i == 'bb'}--> style="color: #f30" <!--{elseif i == 'cc'}--> style="color: #0f0" <!--{/if}-->><!--{=i}--> -> <!--{=JSON.stringify(it)}-->
+            <ul>
+                <!--{each j el in it}-->
+                <li><!--{=j}--> - <!--{=el}--></li>
+                <!--{/each}-->
+            </ul>
+        </li>
         <!--{/each}-->
     </ul>
     <dl>

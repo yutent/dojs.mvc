@@ -7,10 +7,10 @@
             "ignore_watch": ["data", "public", "package.json", "node_modules/dojs/node_modules", ".git", ".gitignore"],
             "exec_mode": "cluster",
             "instances": "max",
+            "node_args": "--harmony",
             "error_file": "data/logs/error.log",
             "out_file": "data/logs/debug.log",
             "min_uptime": "60s",
-            "max_restarts": 30,
             "max_memory_restart": "300M"
         }
     ]
