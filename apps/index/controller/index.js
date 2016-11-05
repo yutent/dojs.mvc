@@ -11,6 +11,7 @@ class Index extends Controller {
 
     constructor(c){
         super(c)
+        
         // this.model = require('../model/index')
     }
 
