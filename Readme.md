@@ -2,7 +2,7 @@
 
 一个轻量级的，易学的，拓展性灵活的 nodejs MVC框架。
 
-要求nodejs版本在4.0或以上，默认使用mongoDB/MySQL，其他的数据库可以自行拓展
+该分支要求nodejs版本在7.0或以上(且node启动需要加参数 --harmony)，默认使用mongoDB/MySQL，其他的数据库可以自行拓展
 
 
 ## 启用方法(步骤)
