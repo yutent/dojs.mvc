@@ -18,7 +18,7 @@
     </section>
     <ul>
         <!--{each i it in arr}-->
-        <li <!--{if i == 'bb'}--> style="color: #f30" <!--{elseif i == 'cc'}--> style="color: #0f0" <!--{/if}-->><!--{=i}--> -> <!--{=JSON.stringify(it)}-->
+        <li <!--{if i == 'bb'}--> style="color: #f30" <!--{elseif i == 'cc'}--> style="color: #0f0" <!--{/if}-->><!--{=i}--> -> 
             <ul>
                 <!--{each j el in it}-->
                 <li><!--{=j}--> - <!--{=el}--></li>
