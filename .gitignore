@@ -5,6 +5,7 @@ Icon
 /node_modules
 /data
 /bin/logs
+/bin/lock
 
 # Thumbnails
 ._*
