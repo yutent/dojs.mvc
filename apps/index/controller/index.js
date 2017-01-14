@@ -12,12 +12,13 @@ class Index extends Controller {
     constructor(c){
         super(c)
         
-        // this.model = require('../model/index')
+        this.model = require('../model/index')
     }
 
 
-    async index(){
-        // let arr = yield this.model.get1()
+    async indexAction(){
+        
+        // let arr = await this.model.get1()
         let arr = [{aa: 123, bb: 456, cc: 789}]
         this.assign('docHd', 'example')
         this.assign('docCont', process.pid)

@@ -10,30 +10,26 @@
 class Index {
 
     constructor(){
-        this.db = new Mysql(dojs.dbs.mysql)
-        this.mo = new Mongo(dojs.dbs.mongo)
+        this.db = new Mysql(dojs.db.mysql)
+        // this.mo = new Mongo(dojs.db.mongo)
     }
 
     get1(){
-        return fn => {
-            this.db.findOne({
-                table: 'test',
-                where: {},
-                slave: true,
-            }, fn).catch(err => {
-                Response.error(err)
-            })
-        }
+        return this.db.findOne({
+            table: 'test',
+            where: {},
+            slave: true,
+        })
     }
 
-    get2(){
+/*    get2(){
         return fn => {
             this.mo.find({
                 collection: 'test',
                 where: {}
             }, fn)
         }
-    }
+    }*/
 
 
 

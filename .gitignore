@@ -2,8 +2,9 @@
 .AppleDouble
 .LSOverride
 Icon
-/node_modules/dojs/node_modules
+/node_modules
 /data
+/bin/logs
 
 # Thumbnails
 ._*
