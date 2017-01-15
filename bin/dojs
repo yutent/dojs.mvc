@@ -1,19 +1,27 @@
 #!/bin/bash
 
 
-os=linux
-cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+os=unknow
 
-if [ $(uname -o | grep -i linux | wc -l) -eq 1 ]; then
+
+if [ $(uname -s | grep Linux | wc -l) -eq 1 ]; then
     os=linux
-else
-    os=unknow
+elif [ $(uname -s | grep Darwin | wc -l) -eq 1 ]; then
+    os=macos
 fi
 
 if [ "$os" = "unknow" ]; then
     echo "无法识别你的操作系统，请自行修改app-demo.yaml配置，并用pm2管理应用"
     exit 3;
 fi
+
+cpus=1
+if [ "$os" = "linux" ]; then
+    cpus=$(cat /proc/cpuinfo | grep processor | wc -l)
+elif [ "$os" = "macos" ]; then
+    cpus=$(sysctl -n hw.ncpu)
+fi
+
 
 if [ "$(which pm2)" = "" ]; then
     echo "请先安装pm2, 可使用以下命令：(sudo npm i pm2 -g)"
