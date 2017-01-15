@@ -11,7 +11,7 @@ else
 fi
 
 if [ "$os" = "unknow" ]; then
-    echo "无法识别你的操作系统，请自行修改app.yaml配置，并用pm2管理应用"
+    echo "无法识别你的操作系统，请自行修改app-demo.yaml配置，并用pm2管理应用"
     exit 3;
 fi
 

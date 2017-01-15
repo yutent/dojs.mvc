@@ -6,8 +6,8 @@ ignore_watch: [bin, data, public, package.json, node_modules, .git, .gitignore]
 exec_mode: cluster
 instances: max
 node_args: --harmony
-error_file: /www/project/dojs/bin/logs/error.log
-out_file: /www/project/dojs/bin/logs/out.log
+error_file: data/logs/error.log
+out_file: data/logs/out.log
 merge_logs: true
 min_uptime: 60s
 max_memory_restart: 300M
