@@ -6,6 +6,7 @@ Icon
 /data
 /bin/logs
 /bin/lock
+/bin/app.yaml
 
 # Thumbnails
 ._*

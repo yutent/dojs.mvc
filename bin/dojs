@@ -3,7 +3,6 @@
 
 os=unknow
 
-
 if [ $(uname -s | grep Linux | wc -l) -eq 1 ]; then
     os=linux
 elif [ $(uname -s | grep Darwin | wc -l) -eq 1 ]; then
@@ -13,6 +12,10 @@ fi
 if [ "$os" = "unknow" ]; then
     echo "无法识别你的操作系统，请自行修改app-demo.yaml配置，并用pm2管理应用"
     exit 3;
+fi
+
+if [ $(echo "$PWD" | grep bin$ | wc -l) -eq 0 ]; then
+    cd bin
 fi
 
 cpus=1
@@ -28,6 +31,13 @@ if [ "$(which pm2)" = "" ]; then
     exit 1;
 fi
 
+pm2Ver=$(pm2 -v)
+if [ $(echo "$pm2Ver 2.0.0" | tr " " "\n" | sort -n | head -1) = "$pm2Ver" ]; then
+    echo "要求pm2的版本至少在2.0.0"
+    echo "系统当前pm2的版本为: $pm2Ver"
+    echo "可使用以下命令进行升级: sudo npm i pm2 -g && pm2 update"
+    exit 1
+fi
 
 do_start() {
     if [ ! -e app.yaml ]; then
