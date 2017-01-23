@@ -1,6 +1,11 @@
 <!--{include './header'}-->
 <!--{var obj={a: 123, b: 456}}-->
 <!--{var arr2=[2,4,6]}-->
+<!--{var ooo={2: '这是1', 4: '这是6', 6: '这是6'}}-->
+<!--{var a='2017-01-12 23:33:33'}-->
+<!--{var tt=function(v){
+return ooo[v]}
+}-->
 
 <h1>It works! <!--{=Date.now() | date:'Y-m-d'}--></h1>
 <fieldset>
@@ -27,6 +32,20 @@
         </li>
         <!--{/each}-->
     </ul>
+    <div class="menu">
+        <!--{each i it in menu}-->
+        <ul>
+            <li class="name"><!--{=i-0+1}--><!--{=it.name}--></li>
+            <li class="sub-name-box">
+                <ul>
+                    <!--{each sub in it.sub}-->
+                    <li class="sub-name"><!--{=i}--><!--{=sub.name}--></li>
+                    <!--{/each}-->
+                </ul>
+            </li>
+        </ul>
+        <!--{/each}-->
+    </div>
     <dl>
         <!--{each i it in obj}-->
         <dt><span style="color:#09f" ><!--{=i}--> </span><span><!--{=it}--></span></dt>
@@ -34,8 +53,12 @@
     </dl>
     <dl>
         <!--{each i in arr2}-->
-            <!--{=i}--> 
+            <!--{=tt(i)}--> 
         <!--{/each}-->
+        <p>
+            <!--{=a | date:Y年m月d日  H:i}-->
+        </p>
+        
     </dl>
 </fieldset>
     
