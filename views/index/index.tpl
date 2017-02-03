@@ -7,7 +7,7 @@
 return ooo[v]}
 }-->
 
-<h1>It works! <!--{=Date.now() | date:'Y-m-d'}--></h1>
+<h1>It works! <!--{=Date.now() | date:Y-m-d}--></h1>
 <fieldset>
     <legend><!--{=docHd}--> : </legend>
     <section>
@@ -47,8 +47,8 @@ return ooo[v]}
         <!--{/each}-->
     </div>
     <dl>
-        <!--{each i it in obj}-->
-        <dt><span style="color:#09f" ><!--{=i}--> </span><span><!--{=it}--></span></dt>
+        <!--{each it in obj}-->
+        <dt><span style="color:#09f" ><!--{=it}--> </span><span><!--{=it}--></span></dt>
         <!--{/each}-->
     </dl>
     <dl>

@@ -8,7 +8,7 @@
 "use strict";
 
 let app = new (require('./lib/core/main'))(__dirname + '/')
-let db = require(LIB + 'config/db.json')
+let db = require(`${LIB}config/db-${dojs.env}.json`)
 
 app.loadDB(db);
 

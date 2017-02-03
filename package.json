@@ -1,6 +1,6 @@
 {
   "name": "dojs-mvc",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "doJS, 一个轻量级的nodejs mvc框架 旨在简单易用, 5分钟即可上手",
   "author": "宇天 <yutent@doui.cc>",
   "dependencies": {
@@ -12,7 +12,7 @@
     "dojs-mysql": "^2.0.2",
     "dojs-request": "^2.0.0",
     "dojs-response": "^2.0.6",
-    "dojs-template": "^2.0.5",
+    "dojs-template": "^2.1.1",
     "ioredis": "^1.15.1",
     "mailx": "^0.0.8"
   },
