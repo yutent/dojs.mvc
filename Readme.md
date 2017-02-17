@@ -11,11 +11,16 @@
 `甚至是不可告人的兼容性 bug 处理能力，所以这部分同学麻烦在安装过程无法继续时，自行兼容一下`
 
 
-1. 下载doJS框架, 拷贝到任意目录。
+1. 下载安装doJS框架。
+    - npm安装
+    ```bash
+    npm install dojs.mvc
+    ```
+    - 仓库拉取
 
 2. 添加nginx配置(使用其他web服务,如apache的童鞋,请自行根据所使用的web服务器语法改写**强烈推荐nginx**), 路径啥的自行根据自己的机器修改
 
-```shell
+```nginx
 upstream dojs_upstream {
     server 127.0.0.1:3000;
     #server 127.0.0.1:3005;
@@ -82,11 +87,11 @@ app.start()
 
 4. 启动应用。在项目根目录打开终端, 输入以下命令 `./bin/dojs start`, 然后根据提示操作, 即可
 
-```shell
-$ cd /www/your_domain.com/
-$ ./bin/dojs
+```bash
+cd /www/your_domain.com/
+./bin/dojs
 使用以下指令: ./bin/dojs {start|stop|status|restart|delete}
-$ ./bin/dojs start
+./bin/dojs start
 ```
 
 
