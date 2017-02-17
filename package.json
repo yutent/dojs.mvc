@@ -1,11 +1,11 @@
 {
   "name": "dojs.mvc",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "doJS, 一个轻量级的nodejs mvc框架 旨在简单易用, 5分钟即可上手",
   "author": "宇天 <yutent@doui.cc>",
   "dependencies": {
     "dojs-cookie": "^1.1.5",
-    "dojs-crypto": "^1.0.3",
+    "crypto.js": "^1.0.0",
     "dojs-extend": "^1.1.7",
     "dojs-fs": "^1.1.0",
     "dojs-mongo": "^1.1.2",
