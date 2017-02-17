@@ -19,7 +19,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://git.oschina.net/yutent/doJS.git"
+    "url": "https://github.com/yutent/dojs.mvc.git"
   },
   "keywords": [
     "dojs, nodejs, mvc, koa, express"
