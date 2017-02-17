@@ -13,10 +13,13 @@
 
 1. 下载安装doJS框架。
     - npm安装
+
     ```bash
     npm install dojs.mvc
     ```
+
     - 仓库拉取
+
 
 2. 添加nginx配置(使用其他web服务,如apache的童鞋,请自行根据所使用的web服务器语法改写**强烈推荐nginx**), 路径啥的自行根据自己的机器修改
 
