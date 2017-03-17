@@ -11,7 +11,6 @@ class Index {
 
     constructor(){
         this.db = new Mysql(dojs.db.mysql)
-        // this.mo = new Mongo(dojs.db.mongo)
     }
 
     get1(){
@@ -22,14 +21,6 @@ class Index {
         })
     }
 
-/*    get2(){
-        return fn => {
-            this.mo.find({
-                collection: 'test',
-                where: {}
-            }, fn)
-        }
-    }*/
 
 
 
