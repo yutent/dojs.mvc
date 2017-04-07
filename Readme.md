@@ -1,5 +1,7 @@
 # Five.js 
 
+![give me five](http://attach.cdn.doui.cc/five.jpg)
+
 一个轻量级的，易学的，拓展性灵活的 nodejs MVC框架, 5分钟即可上手。
 取自"Give me five"之意, 一切就是这么简单
 
