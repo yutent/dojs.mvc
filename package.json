@@ -1,7 +1,7 @@
 {
-  "name": "dojs.mvc",
-  "version": "2.0.2",
-  "description": "doJS, 一个轻量级的nodejs mvc框架 旨在简单易用, 5分钟即可上手",
+  "name": "five",
+  "version": "2.1.0",
+  "description": "Five.js, 一个轻量级的nodejs mvc框架 旨在简单易用, 5分钟即可上手",
   "author": "宇天 <yutent@doui.cc>",
   "dependencies": {
     "crypto.js": "^1.0.0",
@@ -19,10 +19,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/yutent/dojs.mvc.git"
+    "url": "https://github.com/yutent/five.git"
   },
   "keywords": [
-    "dojs, nodejs, mvc, koa, express"
+    "five, fivejs, five.js nodejs, mvc, koa, express"
   ],
   "license": "ISC"
 }

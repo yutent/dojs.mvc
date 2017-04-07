@@ -46,7 +46,7 @@ do_start() {
 
         if [ "$name" = "" ]; then
             echo "没有输入, 自动使用默认名称"
-            name=dojs-demo-app;
+            name=five-demo-app;
         fi
 
         echo "当前应用名称为: $name"
@@ -172,7 +172,7 @@ case "$1" in
         do_del
         ;;
     *)
-        echo "使用以下指令: ./bin/dojs {start|stop|status|restart|delete}" >&2
+        echo "使用以下指令: ./bin/www {start|stop|status|restart|delete}" >&2
         exit 3
         ;;
 esac

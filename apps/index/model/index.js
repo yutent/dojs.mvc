@@ -10,7 +10,7 @@
 class Index {
 
     constructor(){
-        this.db = new Mysql(dojs.db.mysql)
+        this.db = new Mysql(Five.db.mysql)
     }
 
     get1(){

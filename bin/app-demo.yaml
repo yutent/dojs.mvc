@@ -1,7 +1,7 @@
 script: app.js
 cwd: ../
 watch: true
-name: dojs-demo-app
+name: five-demo-app
 ignore_watch: [bin, data, public, package.json, node_modules, .git, .gitignore]
 exec_mode: cluster
 instances: max
