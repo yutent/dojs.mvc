@@ -14,10 +14,20 @@
 `甚至是不可告人的兼容性 bug 处理能力，所以这部分同学麻烦在安装过程无法继续时，自行兼容一下`
 
 
-1. 下载安装doJS框架。
+1. 下载安装Five.js框架。
+
+> 为了方便下载安装及管理, 推荐使用 five-cli(这是一款专门为框架开发的脚本工具) 进行操作。 
 
 ```bash
-git clone https://github.com/yutent/five.git .
+# 全局安装 five-cli
+sudo npm i five-cli -g
+
+# 进入项目目录
+cd /project/demo
+# 初始化一个项目,初始化完成会自动安装所需要的依赖
+five-cli init
+# 初始化完成之后, 执行以下命令即可启动了,如果需要修改配置,可以先修改好再启动
+five-cli start
 ```
 
 
@@ -89,13 +99,11 @@ app.start()
 其他的配置, 请参考lib/core目录里的 register-five.js文件
 
 
-4. 启动应用。在项目根目录打开终端, 输入以下命令 `./bin/www start`, 然后根据提示操作, 即可
+4. 启动应用。在项目根目录打开终端, 输入以下命令 `five-cli start`, 然后根据提示操作, 即可
 
 ```bash
-cd /www/your_domain.com/
-./bin/www
-使用以下指令: ./bin/www {start|stop|status|restart|delete}
-./bin/www start
+# 初始化完成之后, 执行以下命令即可启动了,如果需要修改配置,可以先修改好再启动
+five-cli start
 ```
 
 
