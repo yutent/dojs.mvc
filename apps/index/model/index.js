@@ -10,13 +10,13 @@
 class Index {
 
     constructor(){
-        this.db = new Mysql(Five.db.mysql)
+        this.db = new libs.Mysql(Five.db.mysql)
     }
 
     get1(){
         return this.db.findOne({
             table: 'test',
-            where: {},
+            where: [],
             slave: true,
         })
     }
