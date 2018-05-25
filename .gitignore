@@ -1,12 +1,11 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
+
+
 /node_modules
-/data
-/bin/logs
-/bin/lock
-/bin/app.yaml
+node_modules/
+
 
 # Thumbnails
 ._*
