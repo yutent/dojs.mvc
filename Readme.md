@@ -1,4 +1,4 @@
-# Five.js
+# Five.js(node-five)
 
 ![give me five](http://attach.cdn.doui.cc/apps/five.jpg)
 
@@ -34,7 +34,7 @@ five-cli start
 # 进入项目目录
 cd /project/demo
 
-npm i five --save
+npm i node-five --save
 mkdir apps public data views
 
 touch app.js

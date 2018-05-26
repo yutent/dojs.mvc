@@ -22,7 +22,7 @@
     "url": "https://github.com/yutent/five.git"
   },
   "keywords": [
-    "five, fivejs, five.js, nodejs, mvc, koa, express"
+    "five, fivejs, node-five, five.js, nodejs, mvc, koa, express"
   ],
   "license": "MIT"
 }
