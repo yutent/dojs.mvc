@@ -31,14 +31,15 @@ function hideProperty(host, name, value) {
 
 class Five {
   constructor() {
-    hideProperty(this, '__five__', Object.assign({}, init))
-    hideProperty(this, 'modules', { __error__: null })
-    hideProperty(this, 'middleware', [])
+    hideProperty(this, '__FIVE__', Object.assign({}, init))
+    hideProperty(this, '__MODULES__', { __error__: null })
+    hideProperty(this, '__MIDDLEWARE__', [])
+    hideProperty(this, '__INSTANCE__', {})
 
     global.libs = {
       Smarty: require('smartyx'), //模板引擎
       Log: require('./lib/log'), //基础日志记录工具
-      // Email: require('./lib/sendmail'), //加载email发送类
+      Email: require('./lib/sendmail'), //加载email发送类
       Mysql: require('mysqli'), //加载mysql操作类
       Mongoose: require('mongoose'),
       Cookie: require('http.cookie'),
@@ -46,16 +47,15 @@ class Five {
     }
     global.Util = {
       sec: require('crypto.js'),
+      path: require('path'),
       fs: require('iofs'),
-      // curl: require('superagent'),
       child: require('child_process')
     }
     global.Controller = require('./lib/controller')
-    // global.Log = new libs.Log() //注册log操作类
   }
 
   __init__() {
-    let { domain, website, session } = this.__five__
+    let { domain, website, session } = this.__FIVE__
     domain = domain || website
     session.domain = session.domain || domain
     this.set({ domain, session })
@@ -63,7 +63,7 @@ class Five {
     if (session.type === 'redis') {
       hideProperty(
         this,
-        'SESSION_STORE',
+        '__SESSION_STORE__',
         new libs.Ioredis({
           host: session.db.host || '127.0.0.1',
           port: session.db.port || 6379,
@@ -72,7 +72,7 @@ class Five {
       )
       this.use(redisSession)
     } else {
-      hideProperty(this, 'SESSION_STORE', {})
+      hideProperty(this, '__SESSION_STORE__', {})
       this.use(nativeSession)
     }
     this.use(cookies)
@@ -85,37 +85,48 @@ class Five {
   set(obj) {
     for (let i in obj) {
       if (typeof obj[i] === 'object' && !Array.isArray(obj[i])) {
-        if (!this.__five__[i]) {
-          this.__five__[i] = obj[i]
+        if (!this.__FIVE__[i]) {
+          this.__FIVE__[i] = obj[i]
         } else {
           try {
-            Object.assign(this.__five__[i], obj[i])
+            Object.assign(this.__FIVE__[i], obj[i])
           } catch (err) {
             log(err)
           }
         }
       } else {
-        this.__five__[i] = obj[i]
+        this.__FIVE__[i] = obj[i]
       }
     }
     return this
   }
 
+  // 获取全局配置
   get(key) {
     try {
-      return new Function('o', `return o.${key}`)(this.__five__)
+      return new Function('o', `return o.${key}`)(this.__FIVE__)
     } catch (err) {
       log(err)
       return null
     }
   }
 
-  // 配置框架
-  use(fn) {
-    if (typeof fn !== 'function') {
-      throw TypeError('fn must be a function')
+  // 加载中间件/缓存模块
+  // 与别的中间件用法有些不一样, 回调的传入参数中的req和res,
+  // 并非原生的request对象和response对象,
+  // 而是框架内部封装过的,可通过origin属性访问原生的对象
+  use(key, fn) {
+    if (arguments.length === 1) {
+      if (typeof key !== 'function') {
+        throw TypeError('fn must be a function')
+      }
+      this.__MIDDLEWARE__.push(key)
+    } else {
+      if (typeof key !== 'string') {
+        return
+      }
+      libs[key] = fn
     }
-    this.middleware.push(fn)
   }
   // 预加载应用
   preload(dir) {
@@ -128,14 +139,29 @@ class Five {
           return
         }
         try {
-          this.modules[name] = require(file)
+          this.__MODULES__[name] = require(file)
         } catch (err) {
-          this.modules.__error__ = err
+          this.__MODULES__.__error__ = err
         }
       })
     }
 
     return this
+  }
+
+  // 注册实例化对象到实例池中
+  // 与use方法不同的是, 这个会在server创建之前就已经执行
+  ins(name, fn) {
+    if (arguments.length !== 2) {
+      throw new Error('2 arguments required in instance defining.')
+    }
+    if (typeof fn === 'function') {
+      fn.call(this, this.__FIVE__, function next(instance) {
+        if (instance) {
+          this.__INSTANCE__[name] = instance
+        }
+      })
+    }
   }
 
   // 启动http服务
@@ -147,12 +173,9 @@ class Five {
       let response = new Response(req, res)
       let request = new Request(req, res)
 
-      if (response.res.rendered) {
-        return
-      }
       response.set('X-Powered-By', 'Five.js')
 
-      let middleware = this.middleware.concat()
+      let middleware = this.__MIDDLEWARE__.concat()
       let fn = middleware.shift()
       if (fn) {
         ;(async function next() {

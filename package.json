@@ -8,7 +8,7 @@
     "crypto.js": "^1.1.0",
     "es.shim": "^1.0.1",
     "iofs": "^1.1.0",
-    "mysqli": "^2.0.0",
+    "mysqli": "^3.0.0",
     "http.request": "^1.0.2",
     "http.response": "^1.0.1",
     "http.cookie": "^1.0.2",
