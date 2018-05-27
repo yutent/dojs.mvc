@@ -24,5 +24,8 @@
   "keywords": [
     "five, fivejs, node-five, five.js, nodejs, mvc, koa, express"
   ],
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "license": "MIT"
 }
