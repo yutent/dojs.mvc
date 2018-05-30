@@ -41,7 +41,6 @@ class Five {
       Log: require('./lib/log'), //基础日志记录工具
       Email: require('./lib/sendmail'), //加载email发送类
       Mysql: require('mysqli'), //加载mysql操作类
-      Mongoose: require('mongoose'),
       Cookie: require('http.cookie'),
       Ioredis: require('ioredis')
     }
