@@ -152,8 +152,8 @@ class Five {
   // 与use方法不同的是, 这个会在server创建之前就已经执行
   ins(name, fn) {
     let _this = this
-    if (arguments.length !== 2) {
-      throw new Error('2 arguments required in instance defining.')
+    if (arguments.length === 1) {
+      return this.__INSTANCE__[name]
     }
     if (typeof fn === 'function') {
       fn.call(this, this.__FIVE__, function next(instance) {
