@@ -47,6 +47,7 @@ class Five {
     global.Util = {
       sec: require('crypto.js'),
       path: require('path'),
+      url: require('url'),
       fs: require('iofs'),
       child: require('child_process')
     }
