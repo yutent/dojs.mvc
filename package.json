@@ -1,12 +1,12 @@
 {
   "name": "node-five",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Five.js, 一个轻量级的nodejs mvc框架 旨在简单易用, 5分钟即可上手",
   "author": "宇天 <yutent@doui.cc>",
   "main": "index.js",
   "dependencies": {
     "crypto.js": "^1.1.0",
-    "es.shim": "^1.0.1",
+    "es.shim": "^1.1.1",
     "iofs": "^1.1.0",
     "mysqli": "^3.0.1",
     "http.request": "^1.0.2",
