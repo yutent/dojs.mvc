@@ -15,10 +15,9 @@ const http = require('http')
 const path = require('path')
 const Request = require('http.request')
 const Response = require('http.response')
-const router = require('./lib/router')
-const cookies = require('./lib/cookies')
-const redisSession = require('./lib/redis-session')
-const nativeSession = require('./lib/native-session')
+const routerWare = require('./lib/middleware/router')
+const cookieWare = require('./lib/middleware/cookie')
+const sessionWare = require('./lib/middleware/session')
 
 function hideProperty(host, name, value) {
   Object.defineProperty(host, name, {
@@ -41,7 +40,6 @@ class Five {
       Log: require('./lib/log'), //基础日志记录工具
       Email: require('./lib/sendmail'), //加载email发送类
       Mysql: require('mysqli'), //加载mysql操作类
-      Cookie: require('http.cookie'),
       Ioredis: require('ioredis')
     }
     global.Util = {
@@ -60,6 +58,7 @@ class Five {
     session.domain = session.domain || domain
     this.set({ domain, session })
 
+    // 这里只创建session的存储器, 而初始化操作在中间件中进行
     if (session.type === 'redis') {
       hideProperty(
         this,
@@ -70,13 +69,16 @@ class Five {
           db: session.db.db || 0
         })
       )
-      this.use(redisSession)
     } else {
       hideProperty(this, '__SESSION_STORE__', {})
-      this.use(nativeSession)
     }
-    this.use(cookies)
-    this.use(router)
+
+    // 将session和cookie的中间件提到最前
+    // 以便用户自定义的中间件可以直接操作session和cookie
+    this.__MIDDLEWARE__.unshift(sessionWare)
+    this.__MIDDLEWARE__.unshift(cookieWare)
+
+    this.use(routerWare)
   }
 
   /*------------------------------------------------------------------------*/
