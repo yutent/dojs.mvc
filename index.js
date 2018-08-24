@@ -6,7 +6,6 @@
  */
 'use strict'
 
-process.setMaxListeners(0)
 require('es.shim') // 加载拓展方法
 const init = require('./lib/reg-init')
 
@@ -37,8 +36,8 @@ class Five {
 
     global.libs = {
       Smarty: require('smartyx'), //模板引擎
-      Log: require('./lib/log'), //基础日志记录工具
-      Email: require('./lib/sendmail'), //加载email发送类
+      Log: require('./lib/module/log'), //基础日志记录工具
+      Email: require('./lib/module/sendmail'), //加载email发送类
       Mysql: require('mysqli'), //加载mysql操作类
       Ioredis: require('ioredis')
     }
