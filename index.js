@@ -17,6 +17,7 @@ const Response = require('http.response')
 const routerWare = require('./lib/middleware/router')
 const cookieWare = require('./lib/middleware/cookie')
 const sessionWare = require('./lib/middleware/session')
+const credentialsWare = require('./lib/middleware/credentials')
 
 function hideProperty(host, name, value) {
   Object.defineProperty(host, name, {
@@ -76,6 +77,7 @@ class Five {
     // 以便用户自定义的中间件可以直接操作session和cookie
     this.__MIDDLEWARE__.unshift(sessionWare)
     this.__MIDDLEWARE__.unshift(cookieWare)
+    this.__MIDDLEWARE__.unshift(credentialsWare)
 
     this.use(routerWare)
   }
