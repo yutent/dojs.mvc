@@ -51,7 +51,7 @@ touch app.js
 'use strict'
 
 const Five = require('five')
-var app = new Five()
+const app = new Five()
 
 app.set({ website: 'www.your_domain.com' })
 app.set({ domain: 'your_domain.com' }) // 设置域，cookie用到，不设置则同步website
