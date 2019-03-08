@@ -6,7 +6,6 @@
  */
 'use strict'
 // 替换系统自带的 Promise
-global.Promise = require('bluebird')
 
 require('es.shim') // 加载拓展方法
 const init = require('./lib/reg-init')

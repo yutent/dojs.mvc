@@ -1,6 +1,6 @@
 {
   "name": "node-five",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Five.js, 一个轻量级的nodejs mvc框架 旨在简单易用, 5分钟即可上手",
   "author": "宇天 <yutent@doui.cc>",
   "main": "index.js",
@@ -14,8 +14,7 @@
     "http.cookie": "^1.0.2",
     "smartyx": "^1.0.3",
     "ioredis": "^3.2.2",
-    "mailx": "^0.0.11",
-    "bluebird": "^3.5.3"
+    "mailx": "^0.0.11"
   },
   "devDependencies": {},
   "repository": {
