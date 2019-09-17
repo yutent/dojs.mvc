@@ -7,17 +7,17 @@
 'use strict'
 
 require('es.shim') // 加载拓展方法
-const init = require('./lib/reg-init')
+var init = require('./lib/reg-init')
 
-const log = console.log
-const http = require('http')
-const path = require('path')
-const Request = require('http.request')
-const Response = require('http.response')
-const routerWare = require('./lib/middleware/router')
-const cookieWare = require('./lib/middleware/cookie')
-const sessionWare = require('./lib/middleware/session')
-const credentialsWare = require('./lib/middleware/credentials')
+var log = console.log
+var http = require('http')
+var path = require('path')
+var Request = require('http.request')
+var Response = require('http.response')
+var routerWare = require('./lib/middleware/router')
+var cookieWare = require('./lib/middleware/cookie')
+var sessionWare = require('./lib/middleware/session')
+var credentialsWare = require('./lib/middleware/credentials')
 
 function hideProperty(host, name, value) {
   Object.defineProperty(host, name, {
@@ -53,7 +53,7 @@ class Five {
   }
 
   __init__() {
-    let { domain, website, session } = this.__FIVE__
+    var { domain, website, session } = this.__FIVE__
     domain = domain || website
     session.domain = session.domain || domain
     this.set({ domain, session })
@@ -121,7 +121,7 @@ class Five {
   use(key, fn) {
     if (arguments.length === 1) {
       if (typeof key !== 'function') {
-        throw TypeError('fn must be a function')
+        throw TypeError('argument 1 must be a callback')
       }
       this.__MIDDLEWARE__.push(key)
     } else {
@@ -133,11 +133,11 @@ class Five {
   }
   // 预加载应用
   preload(dir) {
-    let list = Util.fs.ls(dir)
+    var list = Util.fs.ls(dir)
 
     if (list) {
       list.forEach(file => {
-        let { name } = path.parse(file)
+        var { name } = path.parse(file)
         if (name.startsWith('.')) {
           return
         }
@@ -155,7 +155,7 @@ class Five {
   // 注册实例化对象到实例池中
   // 与use方法不同的是, 这个会在server创建之前就已经执行
   ins(name, fn) {
-    let _this = this
+    var _this = this
     if (arguments.length === 1) {
       return this.__INSTANCE__[name]
     }
@@ -170,17 +170,18 @@ class Five {
 
   // 启动http服务
   listen(port) {
-    let _this = this
+    var _this = this
+    var middleware = this.__MIDDLEWARE__.concat()
+
     this.__init__()
 
-    let server = http.createServer((req, res) => {
-      let response = new Response(req, res)
-      let request = new Request(req, res)
+    var server = http.createServer(function(req, res) {
+      var response = new Response(req, res)
+      var request = new Request(req, res)
 
       response.set('X-Powered-By', 'Five.js')
 
-      let middleware = this.__MIDDLEWARE__.concat()
-      let fn = middleware.shift()
+      var fn = middleware.shift()
       if (fn) {
         ;(async function next() {
           await fn.call(_this, request, response, function() {
