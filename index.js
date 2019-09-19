@@ -171,7 +171,6 @@ class Five {
   // 启动http服务
   listen(port) {
     var _this = this
-    var middleware = this.__MIDDLEWARE__.concat()
 
     this.__init__()
 
@@ -181,6 +180,7 @@ class Five {
 
       response.set('X-Powered-By', 'Five.js')
 
+      var middleware = _this.__MIDDLEWARE__.concat()
       var fn = middleware.shift()
       if (fn) {
         ;(async function next() {
