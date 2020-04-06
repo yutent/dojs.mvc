@@ -109,8 +109,7 @@ class Five {
     try {
       return new Function('o', `return o.${key}`)(this.__FIVE__)
     } catch (err) {
-      log(err)
-      return null
+      return
     }
   }
 
